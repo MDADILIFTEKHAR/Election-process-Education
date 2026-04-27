@@ -1,0 +1,205 @@
+.onboarding-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--bg-color);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.onboarding-card-wrapper {
+  width: 100%;
+  max-width: 500px;
+}
+
+.onboarding-main-card {
+  min-height: 450px;
+  display: flex;
+  flex-direction: column;
+}
+
+.step-indicator-dots {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.step-indicator-dots .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.step-indicator-dots .dot.active {
+  width: 24px;
+  background: var(--primary-neon);
+  box-shadow: 0 0 10px var(--primary-neon);
+}
+
+.step-indicator-dots .dot.completed {
+  background: var(--success-color);
+}
+
+.onboarding-header h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  background: linear-gradient(to right, var(--text-light), var(--primary-neon));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.onboarding-header p {
+  color: var(--text-main);
+  font-size: 1rem;
+}
+
+.onboarding-content {
+  flex: 1;
+  margin: 32px 0;
+}
+
+.onboarding-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.onboarding-input-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-with-icon svg {
+  position: absolute;
+  left: 16px;
+  color: var(--primary-neon);
+}
+
+.onboarding-input-group input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  padding: 16px 16px 16px 48px;
+  border-radius: 16px;
+  color: var(--text-light);
+  font-size: 1.1rem;
+  font-family: 'Outfit', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.onboarding-input-group input:focus {
+  outline: none;
+  border-color: var(--primary-neon);
+  background: rgba(0, 242, 254, 0.05);
+  box-shadow: 0 0 20px rgba(0, 242, 254, 0.1);
+}
+
+.onboarding-grid {
+  display: grid;
+  gap: 24px;
+}
+
+.toggle-group {
+  display: flex;
+  gap: 12px;
+}
+
+.toggle-group button {
+  flex: 1;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-main);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.toggle-group button.active {
+  background: rgba(0, 242, 254, 0.1);
+  border-color: var(--primary-neon);
+  color: var(--primary-neon);
+}
+
+.location-detect-btn {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  color: var(--secondary-neon);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.location-detect-btn:hover {
+  color: var(--primary-neon);
+  transform: translateX(4px);
+}
+
+.onboarding-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.finish-btn {
+  background: linear-gradient(135deg, var(--primary-neon), var(--success-color));
+}
+
+@media (max-width: 480px) {
+  .onboarding-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .toggle-group {
+    flex-direction: column;
+  }
+}
+
+.celebration-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 24px;
+}
+
+.celebration-rings {
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 30px var(--primary-neon));
+}
+
+.celebration-container h2 {
+  font-size: 3rem;
+  font-weight: 900;
+}
+
+.celebration-container p {
+  font-size: 1.25rem;
+  color: var(--text-main);
+  max-width: 400px;
+}
+

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Send, Mic, MicOff } from 'lucide-react';
+import { Send, Mic, MicOff, Command } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import './ChatInput.css';
 
 const ChatInput = ({ onSendMessage, disabled, language }) => {
@@ -8,7 +9,6 @@ const ChatInput = ({ onSendMessage, disabled, language }) => {
   const recognitionRef = useRef(null);
 
   useEffect(() => {
-    // Initialize speech recognition
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (SpeechRecognition) {
       const recognition = new SpeechRecognition();
@@ -30,7 +30,6 @@ const ChatInput = ({ onSendMessage, disabled, language }) => {
 
       recognition.onend = () => {
         setIsRecording(false);
-        // We do not auto-send here to allow the user to review the text
       };
 
       recognitionRef.current = recognition;
@@ -40,7 +39,6 @@ const ChatInput = ({ onSendMessage, disabled, language }) => {
   const toggleRecording = () => {
     if (isRecording) {
       recognitionRef.current?.stop();
-      setIsRecording(false);
     } else {
       if (recognitionRef.current) {
         recognitionRef.current.lang = language === 'hi' ? 'hi-IN' : 'en-US';
@@ -59,54 +57,61 @@ const ChatInput = ({ onSendMessage, disabled, language }) => {
       setInput('');
       if (isRecording) {
         recognitionRef.current?.stop();
-        setIsRecording(false);
       }
     }
   };
 
   return (
     <div className="chat-input-wrapper">
-      {!isRecording && (
-        <div className="quick-actions-chips">
-          <button className="chip" onClick={() => setInput("Where is my booth?")}>Booth Location</button>
-          <button className="chip" onClick={() => setInput("What documents do I need?")}>Documents</button>
-          <button className="chip" onClick={() => setInput("Is it crowded now?")}>Check Crowd</button>
-        </div>
-      )}
-      <form className="chat-input-form" onSubmit={handleSubmit}>
-        {isRecording && (
-          <div className="voice-wave-container">
-            <div className="voice-wave">
-              <span className="bar"></span>
-              <span className="bar"></span>
-              <span className="bar"></span>
-              <span className="bar"></span>
-              <span className="bar"></span>
-            </div>
-            <span className="recording-text">Listening...</span>
-          </div>
-        )}
-        
-        <div className={`input-container glass-panel ${isRecording ? 'recording-active' : ''}`}>
-          <button 
-            type="button" 
-            className={`icon-btn mic-btn floating-mic ${isRecording ? 'active' : ''}`} 
-            onClick={toggleRecording}
-            disabled={disabled && !isRecording}
+      <AnimatePresence>
+        {!isRecording && (
+          <motion.div 
+            className="quick-actions-chips"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
           >
-            {isRecording ? <MicOff size={22} /> : <Mic size={22} />}
-          </button>
+            <button className="chip glass-panel" onClick={() => setInput("Where is my booth?")}>Booth Location</button>
+            <button className="chip glass-panel" onClick={() => setInput("What documents do I need?")}>Documents</button>
+            <button className="chip glass-panel" onClick={() => setInput("Check my journey progress")}>Journey</button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <form className="chat-input-form" onSubmit={handleSubmit}>
+        <div className={`input-container glass-panel ${isRecording ? 'recording-active' : ''}`}>
+          <div className="input-prefix">
+            <Command size={16} className="text-main opacity-50" />
+          </div>
+          
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder={isRecording ? "Speak now..." : "Ask me anything..."}
+            placeholder={isRecording ? "Listening to you..." : "Ask your voting companion..."}
             disabled={disabled && !isRecording}
             className="chat-input"
           />
-          <button type="submit" className="icon-btn send-btn" disabled={!input.trim() || disabled}>
-            <Send size={20} />
-          </button>
+
+          <div className="input-actions">
+            <button 
+              type="button" 
+              className={`action-icon-btn mic-btn ${isRecording ? 'active' : ''}`} 
+              onClick={toggleRecording}
+              disabled={disabled && !isRecording}
+            >
+              {isRecording ? <MicOff size={20} /> : <Mic size={20} />}
+              {isRecording && <span className="mic-pulse"></span>}
+            </button>
+            
+            <button 
+              type="submit" 
+              className="action-icon-btn send-btn" 
+              disabled={!input.trim() || disabled}
+            >
+              <Send size={20} />
+            </button>
+          </div>
         </div>
       </form>
     </div>

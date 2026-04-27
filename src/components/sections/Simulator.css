@@ -1,0 +1,218 @@
+.simulator-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 20px;
+  height: 100%;
+}
+
+.simulator-header h2 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.simulator-body {
+  display: flex;
+  gap: 40px;
+  flex: 1;
+}
+
+.simulator-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 200px;
+}
+
+.sim-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0.5;
+  border: 1px solid transparent;
+}
+
+.sim-nav-item.active {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--primary-neon);
+}
+
+.sim-nav-item.completed {
+  opacity: 1;
+  color: var(--success-color);
+}
+
+.sim-nav-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.sim-content-wrapper {
+  flex: 1;
+}
+
+.sim-main-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.sim-card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.sim-icon-bg {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  background: rgba(0, 242, 254, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-neon);
+}
+
+.sim-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-main);
+  margin-bottom: 32px;
+}
+
+.sim-next-btn {
+  width: fit-content;
+}
+
+/* EVM Styles */
+.evm-demo-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.evm-machine {
+  width: 100%;
+  max-width: 400px;
+  padding: 24px;
+  border: 2px solid #555;
+  background: #2a2a2a;
+}
+
+.evm-header {
+  text-align: center;
+  font-weight: 800;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  color: #888;
+}
+
+.evm-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: #333;
+  border-radius: 8px;
+  border: 1px solid #444;
+}
+
+.candidate-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.candidate-num {
+  font-weight: 800;
+  color: #888;
+}
+
+.candidate-symbol {
+  font-size: 1.5rem;
+}
+
+.candidate-name {
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.evm-button {
+  width: 40px;
+  height: 40px;
+  background: #1a1a1a;
+  border: 4px solid #444;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.1s;
+}
+
+.evm-button .button-inner {
+  width: 24px;
+  height: 24px;
+  background: #3498db;
+  border-radius: 50%;
+  box-shadow: inset 0 2px 4px rgba(255,255,255,0.2);
+}
+
+.evm-button:active, .evm-button.pressing {
+  transform: scale(0.9);
+  border-color: var(--primary-neon);
+}
+
+.evm-button:active .button-inner, .evm-button.pressing .button-inner {
+  background: var(--primary-neon);
+  box-shadow: 0 0 15px var(--primary-neon);
+}
+
+.evm-beep-indicator {
+  margin-top: 20px;
+  text-align: center;
+  color: var(--primary-neon);
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.vote-success-message {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .simulator-body {
+    flex-direction: column;
+  }
+  
+  .simulator-nav {
+    flex-direction: row;
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+  
+  .sim-nav-item span {
+    display: none;
+  }
+}

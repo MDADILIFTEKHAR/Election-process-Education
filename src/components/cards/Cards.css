@@ -313,3 +313,210 @@
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* Journey Card Styles */
+.journey-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  margin-top: 15px;
+}
+
+.journey-card .card-header {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin-bottom: 20px;
+  justify-content: space-between;
+}
+
+.progress-badge {
+  background: rgba(0, 242, 254, 0.1);
+  color: var(--primary-neon);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border: 1px solid var(--primary-neon);
+}
+
+.journey-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.step-item.completed {
+  opacity: 1;
+}
+
+.step-item.current {
+  opacity: 1;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border-left: 3px solid var(--primary-neon);
+}
+
+.step-icon {
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+}
+
+.completed .step-icon {
+  color: var(--success-color);
+}
+
+.current .step-icon {
+  color: var(--primary-neon);
+}
+
+.step-info {
+  flex: 1;
+}
+
+.step-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-light);
+  margin-bottom: 2px;
+}
+
+.step-desc {
+  font-size: 0.8rem;
+  color: var(--text-main);
+}
+
+.progress-bar-container {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-neon), var(--secondary-neon));
+  transition: width 0.5s ease-out;
+  box-shadow: 0 0 10px var(--primary-neon);
+}
+
+/* Badge Card Styles */
+.badge-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.badge-card h3 {
+  margin-bottom: 20px;
+}
+
+.badges-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.badge-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.badge-icon-wrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.badge-icon-wrapper.gold {
+  color: #ffd700;
+  border-color: #ffd700;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+}
+
+.badge-icon-wrapper.silver {
+  color: #c0c0c0;
+  border-color: #c0c0c0;
+}
+
+.badge-icon-wrapper.speed {
+  color: #00f2fe;
+  border-color: #00f2fe;
+}
+
+.badge-icon-wrapper.security {
+  color: #00ffa3;
+  border-color: #00ffa3;
+}
+
+.badge-name {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+/* Antigravity Card Specific Styles */
+.antigravity-card {
+  position: relative;
+  overflow: hidden;
+  padding: 24px;
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  cursor: default;
+}
+
+.antigravity-card .card-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.antigravity-card .card-content {
+  position: relative;
+  z-index: 1;
+  padding: 0;
+}
+
+.antigravity-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-light);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.antigravity-card p {
+  font-size: 0.95rem;
+  color: var(--text-main);
+  line-height: 1.5;
+}
+

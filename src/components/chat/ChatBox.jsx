@@ -3,6 +3,7 @@ import ChatInput from './ChatInput';
 import MessageBubble from './MessageBubble';
 import AIAvatar from './AIAvatar';
 import VoiceWaveform from './VoiceWaveform';
+import VoiceAssistant from './VoiceAssistant';
 import { getAIResponse } from '../../services/ai';
 import { useUserMemory } from '../../contexts/UserMemoryContext';
 import './ChatBox.css';
@@ -104,7 +105,13 @@ const ChatBox = ({ language }) => {
         <div ref={messagesEndRef} />
       </div>
       
-      <ChatInput onSendMessage={handleSendMessage} disabled={isLoading} language={language} />
+      <div className="chat-footer glass-panel">
+        <VoiceAssistant 
+          language={language} 
+          onResult={(transcript) => handleSendMessage(transcript)} 
+        />
+        <ChatInput onSendMessage={handleSendMessage} disabled={isLoading} language={language} />
+      </div>
     </div>
   );
 };

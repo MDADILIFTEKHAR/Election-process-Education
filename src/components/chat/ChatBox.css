@@ -7,6 +7,17 @@
   padding-top: 20px;
 }
 
+.chat-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  margin: 0 20px 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+}
+
 .messages-area {
   flex-grow: 1;
   padding: 0 20px 20px 20px;
@@ -39,3 +50,4 @@
   0% { transform: scale(0.8); opacity: 0.5; }
   100% { transform: scale(1.2); opacity: 1; }
 }
+

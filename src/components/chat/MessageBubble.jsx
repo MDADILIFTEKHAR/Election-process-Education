@@ -5,6 +5,8 @@ import './MessageBubble.css';
 import MapCard from '../cards/MapCard';
 import ChecklistCard from '../cards/ChecklistCard';
 import CrowdCard from '../cards/CrowdCard';
+import JourneyCard from '../cards/JourneyCard';
+import BadgeCard from '../cards/BadgeCard';
 
 const MessageBubble = ({ message }) => {
   const isUser = message.sender === 'user';
@@ -19,6 +21,10 @@ const MessageBubble = ({ message }) => {
         return <ChecklistCard data={message.actionData} />;
       case 'crowd':
         return <CrowdCard data={message.actionData} />;
+      case 'journey':
+        return <JourneyCard progress={message.actionData?.progress} completedSteps={message.actionData?.completedSteps} />;
+      case 'badge':
+        return <BadgeCard badges={message.actionData?.badges} />;
       default:
         return null;
     }

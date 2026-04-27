@@ -5,9 +5,20 @@ const UserMemoryContext = createContext();
 const initialMemoryState = {
   voterStatus: 'unregistered', // 'unregistered', 'registered', 'voted'
   location: '',
+  age: null,
+  isFirstTimeVoter: false,
+  onboardingComplete: false,
   documentsReady: false,
   hasSeenWelcome: false,
   userName: '',
+  journeyProgress: 0,
+  completedSteps: [],
+  badges: [],
+  votingBooth: null,
+  streak: 0,
+  lastActive: null,
+  quizzesTaken: 0,
+  fakeNewsHistory: [],
 };
 
 export const UserMemoryProvider = ({ children }) => {
